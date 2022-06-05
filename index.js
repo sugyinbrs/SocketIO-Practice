@@ -17,7 +17,11 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
   console.log("a user connected");
+  socket.on("disconnect", () => {
+    console.log("user disconnected");
+  });
 });
+// connection event 감지
 
 server.listen(3000, () => {
   console.log("listening on *:3000");

@@ -25,7 +25,7 @@ io.on("connection", (socket) => {
 // io.on('connection', (socket) => {
 //   socket.broadcast.emit('hi');
 // });
-// 특정 emitting socket 을 제외한 모두에게 메세지를 보낼 시, `broadcast` 메서드를 사용할 수 있음
+// 메세지를 전송한 클라이언트를 제외한 모두에게 메세지를 보낼 시, `broadcast` 메서드를 사용할 수 있음
 
 server.listen(3000, () => {
   console.log("listening on *:3000");

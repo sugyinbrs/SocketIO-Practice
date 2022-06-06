@@ -63,6 +63,17 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
+
+      var form = document.getElementById("form");
+      var input = document.getElementById("input");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (input.value) {
+          socket.emit("chat message", input.value);
+          input.value = "";
+        }
+      }); // 유저가 메세지 타입 시 서버에서 해당 이벤트를 chat message 이벤트로 해석
     </script>
   </body>
 </html>

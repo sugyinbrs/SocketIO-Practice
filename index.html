@@ -64,6 +64,7 @@
     <script>
       var socket = io();
 
+      var messages = document.getElementById("messages");
       var form = document.getElementById("form");
       var input = document.getElementById("input");
 
@@ -74,6 +75,13 @@
           input.value = "";
         }
       }); // 유저가 메세지 타입 시 서버에서 해당 이벤트를 chat message 이벤트로 해석
+
+      socket.on("chat message", function (msg) {
+        var item = document.createElement("li");
+        item.textContent = msg;
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+      }); // chat message 이벤트 포착 시 페이지에 추가
     </script>
   </body>
 </html>

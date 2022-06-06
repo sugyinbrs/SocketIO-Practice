@@ -17,10 +17,15 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
   socket.on("chat message", (msg) => {
-    console.log("message: " + msg);
+    io.emit("chat message", msg);
   });
 });
-// chat message 이벤트 출력
+// 간단히 작성하기 위하여 보내는 사람을 제외한 모두에게 메세지를 보내는 코드 작성
+
+// io.on('connection', (socket) => {
+//   socket.broadcast.emit('hi');
+// });
+// 특정 emitting socket 을 제외한 모두에게 메세지를 보낼 시, `broadcast` 메서드를 사용할 수 있음
 
 server.listen(3000, () => {
   console.log("listening on *:3000");
